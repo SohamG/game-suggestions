@@ -1,0 +1,36 @@
+{% macro card(title="", tags=[], info="", up=0, down=0) %}
+
+<div class="card d-block w-100">
+    <div class="card-body">
+        <details style="cursor: context-menu;">
+            <summary>
+                <h4 class="card-title">{{ title }}</title>
+                </h4>
+                <h6 class="card-subtitle mb-2 text-muted">{% for tag in tags %} {{ tag }} {% endfor %}</h6>
+            </summary>
+            <p class="card-text">{{ info }}</p>
+        </details>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col m-0 p-0 align-items-start">
+                    <a href="#" style="all: unset; cursor: pointer;"><i class="fa fa-angle-up card-link" aria-hidden="true"></i></a><small><span class="mx-1">{{ up }}</span></small>
+                    <span class="mx-1"></span>
+                    <a href="#" style="all: unset; cursor: pointer;"><i class="fa fa-angle-down card-link" aria-hidden="true"></i></a><small><span class="mx-1">{{ up }}</span></small>
+                </div>
+                <div class="col-1">&nbsp;</div>
+                <div class="col">
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+{% endmacro %}
