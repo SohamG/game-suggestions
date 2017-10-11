@@ -1,38 +1,54 @@
 {% extends "landing.html" %}
-{% import "macros.html" as macros %}
-
 {% block body %}
-<body>
-<div class = "container-fluid">
-    <div class="row">
-        <div class="col-md-4 col-sm-1">
-            {% for listing in listings1 %} 
-                macros.card(title={{ listing.title }}, tags={{ listing.tags }}, info={{ listing.info }}, up={{ listing.up }], down={{ listing.down }})
-            {% endfor %}}
-        </div>
 
-        
-        <div class="col-md-4 col-sm-1">
-            <!--CARD  -->
-        </div>
-        
-        <div class="col-md-4 col-sm-1">
-            <!-- CARD -->
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-1">
+                {% for dict in listings1 %}
+                    <div class="card d-block w-100">
+                        <div class="card-body">
+                            <details style="cursor: context-menu;">
+                                <summary>
+                                    <h4 class="card-title">{{ dict.title }}</title>
+                                    </h4>
+                                    <h6 class="card-subtitle mb-2 text-muted">{% for tag in dict.tags %} {{ tag }} {% endfor %}</h6>
+                                </summary>
+                                <p class="card-text">{{ dict.info }}</p>
+                            </details>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col m-0 p-0 align-items-start">
+                                        <a href="#" style="all: unset; cursor: pointer;"><i class="fa fa-angle-up card-link" aria-hidden="true"></i></a><small><span class="mx-1">{{ dict.up }}</span></small>
+                                        <span class="mx-1"></span>
+                                        <a href="#" style="all: unset; cursor: pointer;"><i class="fa fa-angle-down card-link" aria-hidden="true"></i></a><small><span class="mx-1">{{ dict.down }}</span></small>
+                                    </div>
+                                    <div class="col-1">&nbsp;</div>
+                                    <div class="col">
+                                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+
+            <div class="col-md-4 col-sm-1">
+                <!--CARD  -->
+            </div>
+
+            <div class="col-md-4 col-sm-1">
+                <!-- CARD -->
+            </div>
         </div>
     </div>
-</div>
-d
+
 </body>
-
-
-
-
-
-
-
-
-
-
 
 
 {% endblock %}
