@@ -1,41 +1,34 @@
 from flask import Flask, render_template
-from flask_pymongo import PyMongo
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
 app.jinja_env.auto_reload = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['MONGO_DBNAME'] = 'db1'
-app.config['MONGO_URI'] = 'mongodb://root:root123@ds113915.mlab.com:13915/db1'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://user1:passwd123@localhost/gamesuggest'
 
-mongo = PyMongo(app)
+db = SQLAlchemy(app)
+
+# Schemas
 
 
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    poster = db.Column(db.String(80), unique=True, nullable=False)
+    post_title = db.Column
+    up = db.Column(db.Integer)
+    down = db.Column(db.Integer)
+
+    
+
+    def __repr__(self):
+        return '<User %r>' % self.
+
+
+# Routes
 @app.route("/")
 def hello():
-    listings1 = (
-        {
-            'title': "Wrangler shield is too OP",
-            'tags': ['#tf2', '#engineer'],
-            'info': 'We all know wrangler has blah blah blah s s s s s s s s s ss s s s',
-            'up': 100, 
-            'down': 10
-        },
-        {
-            'title': "Wrangler shield is too OP",
-            'tags': ['#tf2', '#engineer'],
-            'info': 'We all know wrangler has blah blah blah s s s s s s s s s ss s s s',
-            'up': 100, 
-            'down': 10
-        },
-        {
-            'title': "Wrangler shield is too OP",
-            'tags': ['#tf2', '#engineer'],
-            'info': 'We all know wrangler has blah blah blah s s s s s s s s s ss s s s',
-            'up': 100, 
-            'down': 10
-        }
-    )
+    #listings1 =  
     return render_template("main.html", listings1=listings1)
 
 
